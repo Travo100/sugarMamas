@@ -1,0 +1,111 @@
+<div class="row">
+  <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+    <div class="panel panel-login formStyle">
+      <div class="panel-heading formStyle">
+        <div class="row">
+          <div class="col-xs-6 text-center">
+            <a href="#" class="active tab" id="login-form-link">Login</a>
+          </div>
+          <div class="col-xs-6 text-center">
+            <a href="" class="" id="register-form-link">Register</a>
+          </div>
+        </div>
+        <hr>
+      </div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-lg-12">
+            <!-- throw server-side validation errors -->
+            {{#if messages.logout}}
+              <div class="alert alert-success alert-logout">
+                <strong>{{messages.logout}}</strong>
+              </div>
+            {{/if}}
+
+            {{#if registrationErrors}}
+              {{#each registrationErrors}}
+                <div class="alert alert-danger alert-register">
+                  <strong>{{msg}}</strong>
+                </div>
+              {{/each}}
+            {{/if}}
+
+            {{#if email_exists}}
+              <div class="alert alert-danger alert-register">
+                <strong>{{email_exists}}</strong>
+              </div>
+            {{/if}}
+            <!-- end reg errors, start login -->
+            {{#if login_error}}
+              <div class="alert alert-danger alert-login">
+                <strong>{{login_error}}</strong>
+              </div>
+            {{/if}}
+
+            {{#if password_error}}
+              <div class="alert alert-danger alert-login">
+                <strong>{{password_error}}</strong>
+              </div>
+            {{/if}}
+            <!-- end errors -->
+            <form id="login-form" action="/login" method="post" role="form" style="display: block;">
+              <div class="form-group">
+                <input type="email" name="email" id="loginEmail" tabindex="2" class="form-control formStyle" placeholder="Email Address" value="" required="">
+              </div>
+
+              <div class="form-group">
+                <input type="password" name="password" id="loginPassword" tabindex="2" class="form-control formStyle" placeholder="Password" required="">
+              </div>
+
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-sm-6 col-sm-offset-3">
+                    <input type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control formStyle btn btn-login" value="Log In">
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-lg-12">
+                    <div class="text-center">
+                      <a href="#" tabindex="5" class="forgot-password">Forgot Password?</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </form>
+
+            <form id="register-form" action="/register" method="post" role="form" style="display: none;">
+              <div class="form-group">
+                <input type="email" name="email" id="registerEmail" tabindex="1" class="form-control formStyle" placeholder="Email Address" value="" required="">
+              </div>
+
+              <!-- <div class="form-group">
+                <input type="text" pattern="[0-9]{5}" name="zipCode" id="zipCode" tabindex="2" class="form-control formStyle" placeholder="Zip Code" value="" required="">
+              </div> -->
+
+              <div class="form-group">
+                <input type="password" name="password" id="registerPassword" tabindex="3" class="form-control formStyle" placeholder="Password" required="">
+              </div>
+
+              <div class="form-group">
+                <input type="password" name="confirmPassword" id="confirmPassword" tabindex="4" class="form-control formStyle" placeholder="Confirm Password" required="">
+              </div>
+
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-sm-6 col-sm-offset-3">
+                    <input type="submit" name="register-submit" id="register-submit" tabindex="5" class="form-control formStyle btn btn-register" value="Register Now">
+                  </div>
+                </div>
+              </div>
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
